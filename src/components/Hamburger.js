@@ -1,0 +1,165 @@
+import styled from 'styled-components'
+import { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+
+const COLORS = {
+  primaryDark: 'black',
+  primaryLight: 'white'
+}
+
+const Hamburger = () => {
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click)
+
+  console.log(click)
+  return (
+    <>
+      <MenuLabel htmlFor='navi-toggle' onClick={handleClick}><Icon clicked={click}>&nbsp;</Icon></MenuLabel>
+      <NavBackground clicked={click}>&nbsp;</NavBackground>
+
+      {click &&
+        <Navigation onClick={handleClick}>
+          <MenuText>Menu</MenuText>
+          <List>
+            <ItemLink>Home</ItemLink>
+            <ItemLink>Portfolio</ItemLink>
+            <ItemLink>About</ItemLink>
+            <ItemLink>Contact</ItemLink>
+            <ItemLink>Github</ItemLink>
+            <ItemLink>Resume</ItemLink>
+          </List>
+        </Navigation>
+      }
+    </>
+  )
+}
+
+export default Hamburger;
+
+
+const MenuLabel = styled.label`
+  background-color: ${COLORS.primaryDark};
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+  cursor: pointer;
+  z-index: 999999999999999999;
+  box-shadow: 0 1rem 3rem rgba(182, 237, 200, 0.3);
+  text-align: center;
+  
+  @media screen and (max-width: 480px) {
+    height: 3em;
+    width: 3em;
+  }
+`;
+
+const NavBackground = styled.div`
+  position: fixed;
+  background-image: radial-gradient(${COLORS.primaryDark}, ${COLORS.primaryLight});
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+  right: 11.5em;
+
+  transform: ${props => props.clicked ? "scale(80)" : "scale(0)"};
+  transition: transform 1s;
+
+  @media screen and (max-width: 480px) {
+    height: 2.5rem;
+    width: 2.5rem;
+    right: 2em;
+  }
+`;
+
+const Icon = styled.span`
+  position: relative;
+  background-color: ${props => props.clicked ? 'transparent' : 'white'};
+  width: 2rem;
+  height: 2px;
+  display: inline-block;
+  margin-top: 1.9rem;
+  transition: all 0.3s;
+
+  @media screen and (max-width: 480px) {
+    width: 1.5em;
+    margin-top: 1.5rem;
+  }
+
+  &::before, &::after {
+    content: "";
+    width: 2rem;
+    height: 2px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    background-color: white;
+
+    @media screen and (max-width: 480px) {
+      width: 1.5em;
+    }
+  }
+
+  &::before {
+    top: ${props => props.clicked ? '0': '-0.5rem' };
+    transform: ${props => props.clicked ? 'rotate(135deg)': 'rotate(0)'};
+  }
+
+  &::after {
+    top: ${props => props.clicked ? '0': '0.5rem' };
+    transform: ${props => props.clicked ? 'rotate(-135deg)': 'rotate(0)'};
+  }
+`;
+
+const Navigation = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const ItemLink = styled.h1`
+  font-size: 3em;
+  text-decoration: none;
+  color: ${COLORS.primaryLight};
+  padding: 1rem 2rem;
+  background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
+  background-size: 240%;
+  transition: all 0.4s;
+
+  @media screen and (max-width: 480px) {
+    font-size: 2.2em;
+  }
+  
+  &:hover, &:active {
+    cursor: pointer;
+    background-position: 100%;
+    color: ${COLORS.primaryDark};
+    transform: translateX(1rem);
+  }
+`;
+
+const List = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 500px;
+  width: 100%;
+`;
+
+const MenuText = styled.h1`
+  font-family:  'Rock Salt', sans-serif;
+  color: white;
+  margin-bottom: 40px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 3em;
+    margin-bottom: 10px;
+  }
+`;
