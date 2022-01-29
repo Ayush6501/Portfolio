@@ -10,15 +10,24 @@ import useWindowDimensions from '../hooks/useWindowDimensions';
 const GOLDENRATIO = 1.61803398875
 
 export default function Portfolio({ images }) {
+  const [location, setLocation] = useLocation();
+  const [path, setPath] = useState();
   const { width } = useWindowDimensions();
   let z
   width < 480 ? z = 7.5 : z = 4.9;
 
+  console.log(path)
+  useEffect(() => {
+    setPath(location)
+  }, [location])
+
+  console.log(location)
+
   return (
     <>
-      <HeadingContainer>
+      {path === '/Portfolio' && <HeadingContainer>
         <Heading>Portfolio</Heading>
-      </HeadingContainer>
+      </HeadingContainer>}
       <Canvas gl={{ alpha: false }} dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 2, 15] }}>
         <color attach="background" args={['#191920']} />
         <fog attach="fog" args={['#191920', 0, 15]} />

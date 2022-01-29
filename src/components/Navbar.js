@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
 import Hamburger from './Hamburger'
 import { useLocation } from 'react-router-dom'
 
@@ -55,7 +52,7 @@ const LinksBox = styled.div`
 const CTAbox = styled.div``;
 
 const Logo = styled.h1`
-  color: ${props => props.loc === '/' ? 'dark' : 'white'};
+  color: ${props => (props.loc === '/' || props.loc === '/About') ? 'dark' : 'white'};
   font-size: 40px;
   font-family: "Major Mono Display", monospace;
   letter-spacing: 0.07em;

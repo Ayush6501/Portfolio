@@ -40,8 +40,8 @@ export default Hamburger;
 const MenuLabel = styled.label`
   background-color: ${COLORS.primaryDark};
   border-radius: 50%;
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
   cursor: pointer;
   z-index: 999999999999999999;
   box-shadow: 0 1rem 3rem rgba(182, 237, 200, 0.3);
@@ -56,12 +56,12 @@ const MenuLabel = styled.label`
 const NavBackground = styled.div`
   position: fixed;
   background-image: radial-gradient(${COLORS.primaryDark}, ${COLORS.primaryLight});
-  height: 3.5rem;
-  width: 3.5rem;
+  height: 3rem;
+  width: 3rem;
   border-radius: 50%;
-  right: 11.5em;
+  right: 12.5em;
 
-  transform: ${props => props.clicked ? "scale(80)" : "scale(0)"};
+  transform: ${props => props.clicked ? "scale(100)" : "scale(0)"};
   transition: transform 1s;
 
   @media screen and (max-width: 480px) {
@@ -74,10 +74,10 @@ const NavBackground = styled.div`
 const Icon = styled.span`
   position: relative;
   background-color: ${props => props.clicked ? 'transparent' : 'white'};
-  width: 2rem;
+  width: 1.8rem;
   height: 2px;
   display: inline-block;
-  margin-top: 1.9rem;
+  margin-top: 1.5rem;
   transition: all 0.3s;
 
   @media screen and (max-width: 480px) {
@@ -87,7 +87,7 @@ const Icon = styled.span`
 
   &::before, &::after {
     content: "";
-    width: 2rem;
+    width: 1.8rem;
     height: 2px;
     display: inline-block;
     position: absolute;
@@ -125,12 +125,14 @@ const Navigation = styled.nav`
 
 const ItemLink = styled.h1`
   font-size: 3em;
+  letter-spacing: 0.05em;
   text-decoration: none;
   color: ${COLORS.primaryLight};
   padding: 1rem 2rem;
   background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
   background-size: 240%;
   transition: all 0.4s;
+  margin: 0;
 
   @media screen and (max-width: 480px) {
     font-size: 2.2em;
@@ -157,6 +159,7 @@ const MenuText = styled.h1`
   font-family:  'Rock Salt', sans-serif;
   color: white;
   margin-bottom: 40px;
+  font-size: 5em;
 
   @media screen and (max-width: 480px) {
     font-size: 3em;
