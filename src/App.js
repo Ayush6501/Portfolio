@@ -4,7 +4,8 @@ import Landing from './pages/Landing'
 import Portfolio from './pages/Portfolio'
 import Navbar from './components/Navbar'
 import Project from './pages/Project'
-import About from './pages/About'
+import About from './pages/About';
+import { useNavigate } from "react-router-dom";
 
 const pexel = (id) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
 const images = [
@@ -29,7 +30,9 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path='/' element={<Landing />}/>
-        <Route path='/Portfolio' element={<Suspense fallback={<h1>Loading...</h1>}><Portfolio images={images} /></Suspense>} />
+        <Route path='/Portfolio' element={<Suspense fallback={<h1>Loading...</h1>}><Portfolio images={images} /></Suspense>}>
+          <Route path='/Portfolio/item/:id' element={ <></>} />
+        </Route>
         <Route path='/Project/:id' element={<Project />}/>
         <Route path='/About' element={<About />}/>
       </Routes>

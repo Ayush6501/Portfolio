@@ -58,15 +58,35 @@ div > span {
     margin-bottom: 50px;
 }
 
+
 .landing-name > span {
     font-size: 1.5em !important;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1300px) {
     .landing-name{
-        margin-top: 200px;
+        margin-top: 150px;
+        margin-bottom: 0;
     }
 }
+
+@media screen and (max-width: 1300px) {
+    .landing-name > span {
+        font-size: 1em !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .landing-name {
+        display: none;
+    }
+
+    .landing-name > span {
+        font-size: 0.5em !important;
+        text-align: center !important;
+    }
+}
+
 
 #Y {
     opacity: 1;

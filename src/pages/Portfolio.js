@@ -2,26 +2,35 @@ import * as THREE from 'three'
 import { useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useCursor, MeshReflectorMaterial, Image, Text, Environment } from '@react-three/drei'
-import { useRoute, useLocation } from 'wouter'
 import getUuid from 'uuid-by-string';
 import styled from 'styled-components';
 import useWindowDimensions from '../hooks/useWindowDimensions';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+
 
 const GOLDENRATIO = 1.61803398875
 
 export default function Portfolio({ images }) {
-  const [location, setLocation] = useLocation();
+  const location = useLocation();
+  let navigate = useNavigate();
+  let params = useParams();
+  console.log("FRAMES", params)
+
   const [path, setPath] = useState();
   const { width } = useWindowDimensions();
+
   let z
   width < 480 ? z = 7.5 : z = 4.9;
+  console.log('LOCATION', location)
 
-  console.log(path)
   useEffect(() => {
-    setPath(location)
-  }, [location])
+    setPath(location.pathname)
+  }, [location, params])
 
-  console.log(location)
+  const navigateToProject = (name) => {
+    console.log(name)
+    window.location.replace('/Project/1')
+  }
 
   return (
     <>
@@ -33,7 +42,7 @@ export default function Portfolio({ images }) {
         <fog attach="fog" args={['#191920', 0, 15]} />
         <Environment preset="city" />
         <group position={[0, -0.5, 0]}>
-          <Frames images={images} z={z} />
+          <Frames images={images} z={z} navigate={navigate} params={params} navToProject={navigateToProject}/>
           <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
             <planeGeometry args={[50, 50]} />
             <MeshReflectorMaterial
@@ -56,14 +65,13 @@ export default function Portfolio({ images }) {
   )
 }
 
-function Frames({ z, images, q = new THREE.Quaternion(), p = new THREE.Vector3() }) {
+function Frames({ navToProject, params, navigate, z, images, q = new THREE.Quaternion(), p = new THREE.Vector3() }) {
   const ref = useRef()
   const clicked = useRef()
-  const [, params] = useRoute('/item/:id')
-  const [, setLocation] = useLocation()
-  console.log(z)
+
+
   let zI = z === 4.9 ? zI = 1.75 : zI = 2.25
-  console.log(zI)
+  console.log('NAV', navigate)
 
   useEffect(() => {
     clicked.current = ref.current.getObjectByName(params?.id)
@@ -71,6 +79,7 @@ function Frames({ z, images, q = new THREE.Quaternion(), p = new THREE.Vector3()
       clicked.current.parent.updateWorldMatrix(true, true)
       clicked.current.parent.localToWorld(p.set(0, GOLDENRATIO / 2, zI))
       clicked.current.parent.getWorldQuaternion(q)
+
     } else {
       p.set(0, 0.6, z)
       q.identity()
@@ -84,14 +93,17 @@ function Frames({ z, images, q = new THREE.Quaternion(), p = new THREE.Vector3()
   return (
     <group
       ref={ref}
-      onClick={(e) => (e.stopPropagation(), setLocation(clicked.current === e.object ? '/Portfolio' : '/item/' + e.object.name))}
-      onPointerMissed={() => setLocation('/projects')}>
-      {images.map((props) => <Frame key={props.url} {...props} /> /* prettier-ignore */)}
+      onClick={(e) => (
+        e.stopPropagation(),
+        navigate(clicked.current === e.object ? '/Portfolio' : '/Portfolio/item/' + e.object.name)
+      )}
+      onPointerMissed={() => navigate('/Portfolio')}>
+      {images.map((props) => <Frame key={props.url} navToProject={navToProject} {...props} /> /* prettier-ignore */)}
     </group>
   )
 }
 
-function Frame({ url, c = new THREE.Color(), ...props }) {
+function Frame({ navToProject, url, c = new THREE.Color(), ...props }) {
   const [hovered, hover] = useState(false)
   const [rnd] = useState(() => Math.random())
   const image = useRef()
@@ -103,7 +115,7 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
     image.current.material.zoom = 2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 3) / 2
     image.current.scale.x = THREE.MathUtils.lerp(image.current.scale.x, 0.85 * (hovered ? 0.85 : 1), 0.1)
     image.current.scale.y = THREE.MathUtils.lerp(image.current.scale.y, 0.9 * (hovered ? 0.905 : 1), 0.1)
-    frame.current.material.color.lerp(c.set(hovered ? 'orange' : 'white').convertSRGBToLinear(), 0.1)
+    frame.current.material.color.lerp(c.set(hovered ? 'aqua' : 'white').convertSRGBToLinear(), 0.1)
   })
   return (
     <group {...props}>
@@ -121,9 +133,9 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
         </mesh>
         <Image raycast={() => null} ref={image} position={[0, 0, 0.7]} url={url} />
       </mesh>
-      <Text maxWidth={0.1} anchorX="left" anchorY="top" position={[0.55, GOLDENRATIO, 0]} fontSize={0.025}>
+      <Text onClick={navToProject} maxWidth={0.1} anchorX="left" anchorY="top" position={[0.55, GOLDENRATIO, 0]} fontSize={0.025}>
         {name}
-        Read More
+        {'Read More'}
       </Text>
     </group>
   )

@@ -84,6 +84,10 @@ h2 {
     font-size: 3em;
     line-height: 2em;
     letter-spacing: 0.01em;
-    margin-bottom: 50px;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: 1.2em !important;
   }
 }

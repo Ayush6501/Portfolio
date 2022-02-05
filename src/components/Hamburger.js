@@ -11,7 +11,6 @@ const Hamburger = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click)
 
-  console.log(click)
   return (
     <>
       <MenuLabel htmlFor='navi-toggle' onClick={handleClick}><Icon clicked={click}>&nbsp;</Icon></MenuLabel>
@@ -21,12 +20,12 @@ const Hamburger = () => {
         <Navigation onClick={handleClick}>
           <MenuText>Menu</MenuText>
           <List>
-            <ItemLink>Home</ItemLink>
-            <ItemLink>Portfolio</ItemLink>
-            <ItemLink>About</ItemLink>
-            <ItemLink>Contact</ItemLink>
-            <ItemLink>Github</ItemLink>
-            <ItemLink>Resume</ItemLink>
+            <ItemLink to='/'>Home</ItemLink>
+            <ItemLink to='/Portfolio'>Portfolio</ItemLink>
+            <ItemLink to='/About'>About</ItemLink>
+            <ItemLink to='/'>Contact</ItemLink>
+            <DummyLink href={'https://github.com/Ayush6501'}>Github</DummyLink>
+            <ItemLink to='/'>Resume</ItemLink>
           </List>
         </Navigation>
       }
@@ -123,8 +122,8 @@ const Navigation = styled.nav`
   width: 100%;
 `;
 
-const ItemLink = styled.h1`
-  font-size: 3em;
+const ItemLink = styled(Link)`
+  font-size:4em;
   letter-spacing: 0.05em;
   text-decoration: none;
   color: ${COLORS.primaryLight};
@@ -132,12 +131,39 @@ const ItemLink = styled.h1`
   background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
   background-size: 240%;
   transition: all 0.4s;
+  position: initial;
   margin: 0;
+  line-height: 0.9em;
 
   @media screen and (max-width: 480px) {
     font-size: 2.2em;
   }
   
+  &:hover, &:active {
+    cursor: pointer;
+    background-position: 100%;
+    color: ${COLORS.primaryDark};
+    transform: translateX(1rem);
+  }
+`;
+
+const DummyLink = styled.a`
+  font-size:4em;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: ${COLORS.primaryLight};
+  padding: 1rem 2rem;
+  background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
+  background-size: 240%;
+  transition: all 0.4s;
+  position: initial;
+  margin: 0;
+  line-height: 0.9em;
+
+  @media screen and (max-width: 480px) {
+    font-size: 2.2em;
+  }
+
   &:hover, &:active {
     cursor: pointer;
     background-position: 100%;

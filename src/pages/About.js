@@ -5,8 +5,11 @@ import '../styles/about.css';
 import { Grid, Image, List } from 'semantic-ui-react';
 import Marquee from "react-fast-marquee";
 import * as LottiePlayer from "@lottiefiles/lottie-player";
+import useWindowDimensions from '../hooks/useWindowDimensions'
 
 const About = () => {
+  const { width } = useWindowDimensions();
+
   return (
     <>
       <Container image={bg}>
@@ -18,6 +21,7 @@ const About = () => {
           <span id="H">H</span>
 
           &nbsp;&nbsp;
+          {width < 480 && <br/>}
 
           <span id="A">M</span>
           <span id="U">A</span>
@@ -134,7 +138,7 @@ const About = () => {
               <List.Item size={'small'} style={{padding: 0}}>
                 <List.Icon size={'small'} name='codiepie' style={{verticalAlign: 'middle'}}/>
                 <List.Content style={{padding: 0}}>
-                  <List.Description style={{fontSize: '0.5em'}}>
+                  <List.Description style={{fontSize: '0.4em'}}>
                     Quality
                   </List.Description>
                 </List.Content>
@@ -142,7 +146,7 @@ const About = () => {
               <List.Item size={'small'} style={{padding: 0}}>
                 <List.Icon size={'small'} name='codiepie' style={{verticalAlign: 'middle'}}/>
                 <List.Content style={{padding: 0}}>
-                  <List.Description style={{fontSize: '0.5em'}}>
+                  <List.Description style={{fontSize: '0.4em'}}>
                     Quality
                   </List.Description>
                 </List.Content>
@@ -150,7 +154,7 @@ const About = () => {
               <List.Item size={'small'} style={{padding: 0}}>
                 <List.Icon size={'small'} name='codiepie' style={{verticalAlign: 'middle'}}/>
                 <List.Content style={{padding: 0}}>
-                  <List.Description style={{fontSize: '0.5em'}}>
+                  <List.Description style={{fontSize: '0.4em'}}>
                     Quality
                   </List.Description>
                 </List.Content>
@@ -158,7 +162,7 @@ const About = () => {
               <List.Item size={'small'} style={{padding: 0}}>
                 <List.Icon size={'small'} name='codiepie' style={{verticalAlign: 'middle'}}/>
                 <List.Content style={{padding: 0}}>
-                  <List.Description style={{fontSize: '0.5em'}}>
+                  <List.Description style={{fontSize: '0.4em'}}>
                     Quality
                   </List.Description>
                 </List.Content>
@@ -166,7 +170,7 @@ const About = () => {
               <List.Item size={'small'} style={{padding: 0}}>
                 <List.Icon size={'small'} name='codiepie' style={{verticalAlign: 'middle'}}/>
                 <List.Content style={{padding: 0}}>
-                  <List.Description style={{fontSize: '0.5em'}}>
+                  <List.Description style={{fontSize: '0.4em'}}>
                     Quality
                   </List.Description>
                 </List.Content>
@@ -174,7 +178,7 @@ const About = () => {
               <List.Item size={'small'} style={{padding: 0}}>
                 <List.Icon size={'small'} name='codiepie' style={{verticalAlign: 'middle'}}/>
                 <List.Content style={{padding: 0}}>
-                  <List.Description style={{fontSize: '0.5em'}}>
+                  <List.Description style={{fontSize: '0.4em'}}>
                     Quality
                   </List.Description>
                 </List.Content>
@@ -193,7 +197,7 @@ const About = () => {
             loop
             mode="normal"
             src="https://assets9.lottiefiles.com/packages/lf20_iqhd0uv0.json"
-            style={{ width: '450px' }} />
+            style={{ width: `${width < 480 ? '300px': '480px'}` }} />
           <h2>Thank <br/> You</h2>
         </ThankYouBox>
       </Container>
@@ -219,6 +223,11 @@ const Container = styled.div`
   width: 100%;
   font-weight: 500;
   z-index: 999999999;
+
+  @media screen and (max-width: 580px) {
+    flex-direction: column;
+    height: fit-content !important;
+  }
 `;
 
 const DataContainer = styled(Container)`
@@ -235,6 +244,14 @@ const DataContainer = styled(Container)`
     color: black;
     font-size: 1em;
   }
+
+  @media screen and (max-width: 580px) {
+    height: fit-content;
+    
+    h1 {
+      font-size: 0.8em;
+    }
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -247,8 +264,14 @@ const InfoContainer = styled.div`
   margin-top: 55px;
 
   @media screen and (min-width: 1000px) {
-    margin-top: 100px;
+    margin-top: 50px;
     width: 55%;
+  }
+
+  @media screen and (max-width: 580px) {
+    flex-direction: column-reverse;
+    justify-content: center;
+    margin-top: 90px;
   }
 `;
 
@@ -274,6 +297,15 @@ const LeftBox = styled.div`
     
     @media screen and (min-width: 1000px) {
       margin: 10px 50px;
+    }
+  }
+
+  @media screen and (max-width: 580px) {
+    width: 95%;
+    margin-top: 20px;
+    
+    h3 {
+      color: black;
     }
   }
 `;
@@ -302,6 +334,17 @@ const RightBox = styled.div`
     height: 400px;
     width: 300px;
   }
+
+  @media screen and (max-width: 580px) {
+    width: 95%;
+    height: auto;
+    
+    h2 {
+      margin: 0;
+      font-size: 0.5em !important;
+      color: black;
+    }
+  }
 `;
 
 const SocialHeading = styled.h1`
@@ -328,6 +371,22 @@ const SkillContainer = styled.div`
   width: 70%;
   height: 75%;
   margin-top: 40px;
+
+  @media screen and (max-width: 580px) {
+    flex-direction: column;
+    margin: 0;
+    padding-bottom: 100px;
+    width: 95%;
+    
+    h2 {
+      font-size: 0.5em !important;
+    }
+    
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+  }
 `;
 
 const Heading = styled.h1`
@@ -336,6 +395,10 @@ const Heading = styled.h1`
   font-size: 3em !important;
   margin: 0 !important;
   color: black;
+
+  @media screen and (max-width: 580px) {
+    font-size: 0.8em !important;
+  }
 `;
 
 const ThankYouBox = styled.div`
@@ -351,5 +414,16 @@ const ThankYouBox = styled.div`
     text-align: right;
     font-size: 1.5em;
     line-height: 1.2em;
+
+    @media screen and (max-width: 580px) {
+      text-align: center;
+      font-size: 0.7em !important;
+      margin: 0 !important;
+      padding-bottom: 30px;
+    }
+  }
+
+  @media screen and (max-width: 580px) {
+    flex-direction: column;
   }
 `;
