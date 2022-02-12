@@ -20,7 +20,7 @@ export default function Portfolio({ images }) {
   const { width } = useWindowDimensions();
 
   let z
-  width < 480 ? z = 7.5 : z = 4.9;
+  width < 480 ? z = 7.5 : z = 4.7;
   console.log('LOCATION', location)
 
   useEffect(() => {
@@ -70,7 +70,7 @@ function Frames({ navToProject, params, navigate, z, images, q = new THREE.Quate
   const clicked = useRef()
 
 
-  let zI = z === 4.9 ? zI = 1.75 : zI = 2.25
+  let zI = z === 4.7 ? zI = 1.75 : zI = 2.25
   console.log('NAV', navigate)
 
   useEffect(() => {

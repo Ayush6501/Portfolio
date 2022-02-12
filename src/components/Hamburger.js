@@ -58,10 +58,10 @@ const NavBackground = styled.div`
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
-  right: 12.5em;
+  right: 15em;
 
   transform: ${props => props.clicked ? "scale(100)" : "scale(0)"};
-  transition: transform 1s;
+  transition: transform 0.7s;
 
   @media screen and (max-width: 480px) {
     height: 2.5rem;
@@ -77,7 +77,7 @@ const Icon = styled.span`
   height: 2px;
   display: inline-block;
   margin-top: 1.5rem;
-  transition: all 0.3s;
+  transition: all 0.2s;
 
   @media screen and (max-width: 480px) {
     width: 1.5em;
