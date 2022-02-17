@@ -224,7 +224,7 @@ export default About;
 const AboutContainer = styled.div`
   width: 100%;
   height: 100%;
-  background: #fffff0;
+  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -278,7 +278,7 @@ const NameContainer = styled.div`
 `;
 
 const Container = styled.div`
-  background: #fffff0;
+  background: #ffffff;
   margin: 0;
   font-family: 'Poppins', sans-serif;
   color: white;
@@ -309,7 +309,7 @@ const Info = styled.div`
 `;
 
 const DataContainer = styled.div`
-  background: #fffff0;
+  background: #ffffff;
   height: fit-content;
   width: 100%;
   display: flex;

@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Project from './pages/Project'
 import About from './pages/About';
 import { useNavigate } from "react-router-dom";
+import Contact from './pages/Contact'
 
 const pexel = (id) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
 const images = [
@@ -35,6 +36,7 @@ function App() {
         </Route>
         <Route path='/Project/:id' element={<Project />}/>
         <Route path='/About' element={<About />}/>
+        <Route path='/Contact/' element={<Contact/>}/>
       </Routes>
     </>
   );

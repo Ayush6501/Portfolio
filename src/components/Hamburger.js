@@ -23,7 +23,7 @@ const Hamburger = () => {
             <ItemLink to='/'>Home</ItemLink>
             <ItemLink to='/Portfolio'>Portfolio</ItemLink>
             <ItemLink to='/About'>About</ItemLink>
-            <ItemLink to='/'>Contact</ItemLink>
+            <ItemLink to='/Contact'>Contact</ItemLink>
             <DummyLink href={'https://github.com/Ayush6501'}>Github</DummyLink>
             <ItemLink to='/'>Resume</ItemLink>
           </List>
