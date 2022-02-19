@@ -6,7 +6,9 @@ import Navbar from './components/Navbar'
 import Project from './pages/Project'
 import About from './pages/About';
 import { useNavigate } from "react-router-dom";
-import Contact from './pages/Contact'
+import Contact from './pages/Contact';
+import AnimatedCursor from "react-animated-cursor";
+import Resume from './pages/Resume'
 
 const pexel = (id) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260`
 const images = [
@@ -28,6 +30,14 @@ const images = [
 function App() {
   return (
     <>
+      <AnimatedCursor
+        innerSize={12}
+        outerSize={24}
+        color='54, 69, 79'
+        outerAlpha={0.2}
+        innerScale={0.7}
+        outerScale={5}
+      />
       <Navbar/>
       <Routes>
         <Route path='/' element={<Landing />}/>
@@ -36,7 +46,8 @@ function App() {
         </Route>
         <Route path='/Project/:id' element={<Project />}/>
         <Route path='/About' element={<About />}/>
-        <Route path='/Contact/' element={<Contact/>}/>
+        <Route path='/Contact' element={<Contact/>}/>
+        <Route path='/Resume' element={<Resume />}/>
       </Routes>
     </>
   );

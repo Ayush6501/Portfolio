@@ -1,12 +1,45 @@
 import styled from 'styled-components';
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, Divider } from 'semantic-ui-react';
+import useWindowDimensions from '../hooks/useWindowDimensions'
+
 
 
 const Project = () => {
+  const { width } = useWindowDimensions();
+
   return (
    <>
      <TitleContainer>
-        <Title>Project One</Title>
+        <ProjectFooter>
+          <hr
+            style={{
+              width: '95%',
+              color: 'white',
+              backgroundColor: 'white',
+              height: 2
+            }}
+          />
+          <FooterInfo>
+            <TitleSubtitle>
+              <h1>Project One</h1>
+              <h2>ReactJs, Firebase, Material Ui, Graphql</h2>
+            </TitleSubtitle>
+            {width > 800 && <lottie-player
+              autoplay
+              loop
+              mode='normal'
+              src='https://assets2.lottiefiles.com/packages/lf20_66CQcm.json'
+              style={{ height: '100px', width: '150px' }} />}
+          </FooterInfo>
+          <hr
+            style={{
+              width: '95%',
+              color: 'white',
+              backgroundColor: 'white',
+              height: 2
+            }}
+          />
+        </ProjectFooter>
        <img
          src='/Images/demo.jpg'
          alt='Demo'
@@ -29,15 +62,12 @@ const Project = () => {
              <img src='/Images/play-icon-white.png' alt=""/>
              <span>Trailer</span>
            </Trailer>
-           {<br/>}
            <Addlist>
              <span />
              <span />
            </Addlist>
            <GroupWatch>
-             <div>
-               <img src="/Images/group-icon.png" alt=""/>
-             </div>
+             <h4> 4</h4>
            </GroupWatch>
          </Controls>
          <Skills>
@@ -68,30 +98,73 @@ const TitleContainer = styled.div`
   position: relative;
 `;
 
-const Title = styled.h1`
-  font-size: 100px;
+const ProjectFooter = styled.div`
   position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: white;
+  bottom: 0;
+  left: 0;         
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  
+  h1 {
+    font-size: 5em;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
+
+    @media screen and (max-width: 480px) {
+      font-size: 60px;
+      letter-spacing: 2px;
+    }
+  }
 
   @media screen and (max-width: 480px) {
-    font-size: 60px;
-    letter-spacing: 2px;
+    height: 150px;
   }
+`;
+
+const FooterInfo = styled.div`
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  h1 {
+    color: white;
+    margin: 0;
+    padding: 0;
+
+    @media screen and (max-width: 480px) {
+      font-size: 2.5em;
+    }
+  }
+  
+  h2 {
+    color: white;
+    margin: 0;
+
+    @media screen and (max-width: 480px) {
+      font-size: 1.5em;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    justify-content: center;
+  } 
 `;
 
 const ProjectDetailContainer = styled.div`
   width: 100%;
-  height: 90%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   margin-top: 10vh;
+  margin-bottom: 20px;
 `;
 
 const ProjectTitle = styled.h1`
@@ -102,7 +175,6 @@ const ProjectTitle = styled.h1`
 const DetailContainer = styled.div`
   width: 75%;
   height: 80%;
-  margin-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,6 +186,17 @@ const DetailContainer = styled.div`
   }
 `;
 
+const TitleSubtitle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  @media screen and (max-width: 480px) {
+    align-items: center;
+  }
+`;
+
 const Controls = styled.div`
   align-items: center;
   display: flex;
@@ -121,7 +204,6 @@ const Controls = styled.div`
   margin: 24px 0;
   min-height: 56px;
 `;
-
 
 const Player = styled.button`
   font-size: 15px;
@@ -136,7 +218,7 @@ const Player = styled.button`
   letter-spacing: 1.8px;
   text-align: center;
   text-transform: uppercase;
-  background: rgb(249, 249, 249);
+  background: #f0f0f0;
   border: none;
   color: black;
   
@@ -173,9 +255,9 @@ const Trailer = styled.button`
   letter-spacing: 1.8px;
   text-align: center;
   text-transform: uppercase;
-  background: rgba(0, 0, 0, 0.2);
+  background: #f0f0f0;
   border: 1px solid white;
-  color: white;
+  color: black;
   img {
     width: 32px;
   }
@@ -193,6 +275,7 @@ const Trailer = styled.button`
   }
 `;
 
+
 const Addlist = styled.div`
   margin-right: 16px;
   height: 44px;
@@ -208,7 +291,7 @@ const Addlist = styled.div`
     transform: scale(1.05);
     background-color: rgba(0, 0, 0, 0.8);
   }
-  
+
   span {
     background-color: white;
     display: inline-block;
@@ -222,10 +305,11 @@ const Addlist = styled.div`
       transform: translateX(-8px) rotate(0deg);
       width: 2px;
     }
-  } 
+  }
 `;
 
 const GroupWatch = styled(Addlist)``;
+
 
 const Skills = styled.div`
   color: black;

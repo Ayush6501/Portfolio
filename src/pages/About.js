@@ -30,6 +30,7 @@ const About = () => {
       });
     });
   })
+
   return (
     <>
       <AboutContainer>
@@ -43,14 +44,14 @@ const About = () => {
           <Role alignment='left'>Creative <br/> Developer</Role>
           <img src='/Images/demo.jpg' alt='Demo'/>
           <NameContainer>
-            <lottie-player
+            {window > 480 && <lottie-player
               autoplay
               loop
-              mode="normal"
-              src="https://assets7.lottiefiles.com/packages/lf20_AcUJBF.json"
-              style={{ height: '150px', width: '200px'}} />
+              mode='normal'
+              src='https://assets7.lottiefiles.com/packages/lf20_AcUJBF.json'
+              style={{ height: '150px', width: '200px' }} />}
             <Info><p>I build robust Full Stack Applications for the web with a focus on clean approachable design.</p></Info>
-            <Role alignment='right'>Ayush <br/> Majumdar</Role>
+            <Role style={{paddingLeft: `${width < 480 ? '40px': 0}`}} alignment='right'>Ayush <br/> Majumdar</Role>
           </NameContainer>
         </LandingContainer>
       </AboutContainer>
@@ -228,6 +229,11 @@ const AboutContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 480px) {
+    height: fit-content;
+    margin-top: 50px;
+  }
 `;
 
 const LandingContainer = styled.div`
@@ -244,6 +250,17 @@ const LandingContainer = styled.div`
     width: 450px;
     margin-top: 30px;
   }
+
+  @media screen and (max-width: 480px) {
+    width: 90%;
+    justify-content: flex-start;
+    
+    img {
+      height: 200px;
+      width: 250px;
+      margin-bottom: 30px;
+    }
+  }
 `;
 
 const Role = styled.h1`
@@ -252,7 +269,11 @@ const Role = styled.h1`
   font-family: 'Poppins', sans-serif;
   line-height: 0.8em;
   letter-spacing: 0.1em;
-  text-align:  ${props => props.alignment === 'right' ? 'right': 'left'};;
+  text-align:  ${props => props.alignment === 'right' ? 'right': 'left'};
+
+  @media screen and (max-width: 480px) {
+    font-size: 3em;
+  }
 `;
 
 const AboutHeader = styled.div`
@@ -268,6 +289,10 @@ const AboutHeader = styled.div`
     font-size: 1.3em;
     margin: 0;
   }
+
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const NameContainer = styled.div`
@@ -275,6 +300,11 @@ const NameContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const Container = styled.div`
@@ -293,7 +323,7 @@ const Container = styled.div`
   font-weight: 500;
   z-index: 999999999;
 
-  @media screen and (max-width: 580px) {
+  @media screen and (max-width: 480px) {
     flex-direction: column;
     height: fit-content !important;
   }
@@ -305,6 +335,11 @@ const Info = styled.div`
 
   p {
     font-size: 1.2em;
+  }
+
+  @media screen and (max-width: 480px) {
+    max-width: 250px;
+    margin-bottom: 50px;
   }
 `;
 

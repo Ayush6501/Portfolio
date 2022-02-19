@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import AnimatedCursor from 'react-animated-cursor'
 
 const COLORS = {
   primaryDark: 'black',
@@ -13,6 +14,15 @@ const Hamburger = () => {
 
   return (
     <>
+      <AnimatedCursor
+        innerSize={12}
+        outerSize={24}
+        color='54, 69, 79'
+        outerAlpha={0.2}
+        innerScale={0.7}
+        outerScale={5}
+      />
+
       <MenuLabel htmlFor='navi-toggle' onClick={handleClick}><Icon clicked={click}>&nbsp;</Icon></MenuLabel>
       <NavBackground clicked={click}>&nbsp;</NavBackground>
 
@@ -42,7 +52,7 @@ const MenuLabel = styled.label`
   height: 3rem;
   width: 3rem;
   cursor: pointer;
-  z-index: 999999999999999999;
+  z-index: 999;
   box-shadow: 0 1rem 3rem rgba(182, 237, 200, 0.3);
   text-align: center;
   
@@ -53,6 +63,7 @@ const MenuLabel = styled.label`
 `;
 
 const NavBackground = styled.div`
+  cursor: default;
   position: fixed;
   background-image: radial-gradient(${COLORS.primaryDark}, ${COLORS.primaryLight});
   height: 3rem;
