@@ -229,6 +229,7 @@ const AboutContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 0;
 
   @media screen and (max-width: 480px) {
     height: fit-content;

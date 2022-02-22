@@ -1,6 +1,10 @@
 import styled from 'styled-components';
+import useWindowDimensions from '../hooks/useWindowDimensions'
+
 
 const Contact = () => {
+  const { width } = useWindowDimensions();
+
   return (
     <Parent>
       <MapComponent>
@@ -13,12 +17,12 @@ const Contact = () => {
             <h2>Wanna Collaborate!</h2>
             <h2>Hit Me Up!</h2>
           </ContactInfo>
-          <lottie-player
+          {width > 800 && <lottie-player
             autoplay
             loop
-            mode="normal"
-            src="https://assets5.lottiefiles.com/packages/lf20_e4uqdbmg.json"
-            style={{ height: '250px', width: '400px'}} />
+            mode='normal'
+            src='https://assets5.lottiefiles.com/packages/lf20_e4uqdbmg.json'
+            style={{ height: '250px', width: '400px' }} />}
           <Socials>
             <h2>Socials</h2>
             <SocialBox>
@@ -94,6 +98,10 @@ const AboutComponent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 480px) {
+    height: 100%;
+  }  
 `;
 
 const AboutInfo = styled.div`
@@ -113,6 +121,15 @@ const AboutInfo = styled.div`
     font-family: 'Rock Salt', sans-serif;
     letter-spacing: 0.01em;
     text-transform: capitalize;
+
+    @media screen and (max-width: 480px) {
+      font-size: 3em;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    height: fit-content;
+    flex-direction: column;
   }
 `;
 
@@ -136,6 +153,11 @@ const Socials = styled.div`
     color: white;
     margin: 0;
     font-size: 3em;
+
+    @media screen and (max-width: 480px) {
+      margin-top: 30px;
+      font-size: 2em !important;
+    }
   }
 `;
 
@@ -144,4 +166,8 @@ const SocialBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 480px) {
+    flex-wrap: wrap;
+  }
 `;

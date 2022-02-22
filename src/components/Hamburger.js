@@ -125,7 +125,7 @@ const Navigation = styled.nav`
   top: 0;
   left: 0;
   height: 100%;
-  z-index: 600;
+  z-index: 999999999;
   display: flex;
   justify-content: center;
   align-items: center;
