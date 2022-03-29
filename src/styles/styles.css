@@ -76,7 +76,7 @@ h2 {
 .LandingName {
   font-family: 'Rock Salt', sans-serif;
   font-size: 6em;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 480px) {

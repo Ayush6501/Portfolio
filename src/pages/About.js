@@ -1,10 +1,5 @@
-import styled from 'styled-components';
-import bg from '../styles/WP1.gif';
-import bg1 from '../styles/WP3.gif';
-import '../styles/about.css';
+import styled from 'styled-components';import '../styles/about.css';
 import { Grid, Image, List } from 'semantic-ui-react';
-import Marquee from "react-fast-marquee";
-import * as LottiePlayer from "@lottiefiles/lottie-player";
 import useWindowDimensions from '../hooks/useWindowDimensions';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -37,21 +32,21 @@ const About = () => {
         <LandingContainer>
           <AboutHeader>
             <p>Ayush Majumdar</p>
-            <p>Full Stack Developer</p>
+            <p>Full Stack JS Developer</p>
             <p>Machine Learning Enthusiast</p>
             <p>Based in Mumbai, India</p>
           </AboutHeader>
           <Role alignment='left'>Creative <br/> Developer</Role>
           <img src='/Images/demo.jpg' alt='Demo'/>
           <NameContainer>
-            {window > 480 && <lottie-player
+            {width > 480 && <lottie-player
               autoplay
               loop
               mode='normal'
               src='https://assets7.lottiefiles.com/packages/lf20_AcUJBF.json'
               style={{ height: '150px', width: '200px' }} />}
             <Info><p>I build robust Full Stack Applications for the web with a focus on clean approachable design.</p></Info>
-            <Role style={{paddingLeft: `${width < 480 ? '40px': 0}`}} alignment='right'>Ayush <br/> Majumdar</Role>
+            <Role style={{paddingLeft: `${width < 480 ? '55px': 0}`}} alignment='right'>Ayush <br/> Majumdar</Role>
           </NameContainer>
         </LandingContainer>
       </AboutContainer>
@@ -161,39 +156,39 @@ const About = () => {
         <section className='demo-gallery'>
           <ul className='wrapper'>
             <li>
-              <img height='874' src='https://source.unsplash.com/random/1240x874?sig=170' width='1240' />
+              <img height='456' src='https://source.unsplash.com/random/1240x874?sig=170' width='1240' />
             </li>
             <li>
-              <img height='874' src='https://source.unsplash.com/random/1240x874?sig=81' width='1240'/>
+              <img height='456' src='https://source.unsplash.com/random/1240x874?sig=81' width='1240'/>
             </li>
             <li>
-              <img height='874' src='https://source.unsplash.com/random/1240x874?sig=113' width='1240'/>
-            </li>
-          </ul>
-        </section>
-        <section className='demo-gallery'>
-          <ul className='wrapper'>
-            <li>
-              <img height='874' src='https://source.unsplash.com/random/1240x874?sig=65' width='1240'/>
-            </li>
-            <li>
-              <img height='874' src='https://source.unsplash.com/random/1240x874?sig=95' width='1240'/>
-            </li>
-            <li>
-              <img height='874' src='https://source.unsplash.com/random/1240x874?sig=73' width='1240'/>
+              <img height='456' src='https://source.unsplash.com/random/1240x874?sig=113' width='1240'/>
             </li>
           </ul>
         </section>
         <section className='demo-gallery'>
           <ul className='wrapper'>
             <li>
-              <img height='874' src='https://source.unsplash.com/random/1240x874?sig=21' width='1240'/>
+              <img width='456' src='https://source.unsplash.com/random/1240x874?sig=65' width='1240'/>
             </li>
             <li>
-              <img height='874' src='https://source.unsplash.com/random/1240x874?sig=132' width='1240'/>
+              <img width='456' src='https://source.unsplash.com/random/1240x874?sig=95' width='1240'/>
             </li>
             <li>
-              <img height='874' src='https://source.unsplash.com/random/1240x874?sig=151' width='1240'/>
+              <img width='456' src='https://source.unsplash.com/random/1240x874?sig=73' width='1240'/>
+            </li>
+          </ul>
+        </section>
+        <section className='demo-gallery'>
+          <ul className='wrapper'>
+            <li>
+              <img height='456' src='https://source.unsplash.com/random/1240x874?sig=21' width='1240'/>
+            </li>
+            <li>
+              <img height='456' src='https://source.unsplash.com/random/1240x874?sig=132' width='1240'/>
+            </li>
+            <li>
+              <img height='456' src='https://source.unsplash.com/random/1240x874?sig=151' width='1240'/>
             </li>
           </ul>
         </section>
@@ -224,8 +219,8 @@ export default About;
 
 const AboutContainer = styled.div`
   width: 100%;
-  height: 100%;
-  background: #ffffff;
+  height: 100vh;
+  background: #ddd;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -309,7 +304,7 @@ const NameContainer = styled.div`
 `;
 
 const Container = styled.div`
-  background: #ffffff;
+  background: #ddd;
   margin: 0;
   font-family: 'Poppins', sans-serif;
   color: white;
@@ -345,7 +340,7 @@ const Info = styled.div`
 `;
 
 const DataContainer = styled.div`
-  background: #ffffff;
+  background: #ddd;
   height: fit-content;
   width: 100%;
   display: flex;

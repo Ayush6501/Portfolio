@@ -44,11 +44,11 @@ export default function Landing() {
       <div className="overlay">
         <h1 className='LandingName'>Ayush Majumdar</h1>
         <h2>
-          There's not the smallest orb
+          Javascript Developer
           <br />
-          which thou behold'st but in his motion
+          Computer Vision Enthusiast
           <br />
-          like an angel sings —
+          Junior Year CS Student
         </h2>
       </div>
     </>

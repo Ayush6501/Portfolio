@@ -42,7 +42,7 @@ const MainContainer = styled.div`
   padding-bottom: 50px;
   width: 100%;
   height: fit-content;
-  background: linear-gradient(135deg, #191414 , #1db954);
+  background: linear-gradient(135deg, #191414 , #fff);
   display: flex;
   justify-content: center;
   align-items: center;

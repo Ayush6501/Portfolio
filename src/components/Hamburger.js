@@ -35,7 +35,7 @@ const Hamburger = () => {
             <ItemLink to='/About'>About</ItemLink>
             <ItemLink to='/Contact'>Contact</ItemLink>
             <DummyLink href={'https://github.com/Ayush6501'}>Github</DummyLink>
-            <ItemLink to='/'>Resume</ItemLink>
+            <ItemLink to='/Resume'>Resume</ItemLink>
           </List>
         </Navigation>
       }

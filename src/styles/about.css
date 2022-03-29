@@ -1,5 +1,5 @@
 div > span {
-    opacity: 0.15;
+    opacity: 0.75;
 }
 
 
@@ -331,7 +331,7 @@ ul {
 
 li {
     flex-shrink: 0;
-    width: clamp(500px, 60vw, 800px);
+    width: clamp(500px, 60vw, 600px);
     padding-right: 1rem;
 }
 
@@ -422,7 +422,7 @@ footer {height: 50vh}
     content:"";
     position: absolute;
     width: 80px;
-    border: 6px solid #fffff0;
+    border: 6px solid #ddd;
     bottom: -3px;
     left: 50px;
     z-index: 2;
